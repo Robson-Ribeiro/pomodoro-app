@@ -1,0 +1,118 @@
+*,
+*::after, 
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+}
+
+.mainContainer {
+    width: 35vw;
+    height: 90vh;
+    border-radius: 15px;
+    background-color: transparent;
+    backdrop-filter: blur(70px);
+    border: 2px solid white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mainContainer::after {
+    position: absolute;
+    content: '';
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background-color: aqua;
+    left: -40%;
+    top: -4%;
+    filter: blur(130px);
+}
+
+.mainContainer::before {
+    position: absolute;
+    content: '';
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background-color: rgb(255, 0, 149);
+    bottom: -4%;
+    right: -40%;
+    filter: blur(130px);
+}
+
+.info h2 {
+    color: #eee;
+}
+
+
+.info {
+    height: auto;
+    width: 100%;
+    border: 2px solid rgba(255, 255, 255, 0.205);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding: 10px 15px;
+    justify-self: flex-start;
+}
+
+.mainFunctionality {
+    width: 100%;
+    margin-top: 15%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 25%;
+}
+
+.controls, .clockMode {
+    color: #eee;
+    display: flex;
+    justify-content: space-around;
+}
+
+.controls {
+    width: 100%;
+    font-size: 27px;
+}
+
+.clockMode {
+    width: 100%;
+    font-size: 20px;
+}
+
+.digitalClock {
+    color: #fff;
+}
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 1350px) {
+    .mainContainer {
+        width: 43vw;
+    }
+}
+
+@media (max-width: 900px) {
+    .mainContainer {
+        width: 60vw;
+    }
+}
