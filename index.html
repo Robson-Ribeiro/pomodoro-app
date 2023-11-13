@@ -149,6 +149,7 @@
             });
         });
 
+        let currentControl = 1;
         const stop = document.querySelector('.stop');
         const start = document.querySelector('.start');
         const skip = document.querySelector('.skip');
@@ -157,11 +158,18 @@
         controls.forEach((control) => {
             control.addEventListener("click", function (e) {
                 if(e.target.classList.contains("stop")) {
-                    clearInterval(intervalId);
+                    if(currentControl != 1) {
+                        clearInterval(intervalId);
+                        currentControl = 1;
+                    }
                 } else if (e.target.classList.contains("start")) {
-                    runTimer();
+                    if(currentControl != 2) {
+                        runTimer();
+                        currentControl = 2;
+                    }
                 } else if (e.target.classList.contains("skip")) {
                     skipTimer();
+                    currentControl = 1;
                 }
                 setTimer();
             });
