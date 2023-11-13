@@ -83,6 +83,8 @@
             year.innerText = dateTime.getFullYear();
         }, 1000);
 
+        let intervalId;
+        let timerFinish = false;
         const timerMinutes = document.getElementById('timerMinutes');
         const timerSeconds = document.getElementById('timerSeconds');
 
@@ -92,16 +94,42 @@
 
         let timerPeriod = 1500;
         
-        const setTimer = (seconds) => {
-            timerMinutes.innerText =  Math.floor(seconds / 60) < 10 ? '0' + Math.floor(seconds / 60) : Math.floor(seconds / 60);
-            timerSeconds.innerText = seconds % 60 < 10 ? '0' + seconds % 60 : seconds % 60;
+        const setTimer = () => {
+            timerMinutes.innerText =  Math.floor(timerPeriod / 60) < 10 ? '0' + Math.floor(timerPeriod / 60) : Math.floor(timerPeriod / 60);
+            timerSeconds.innerText = timerPeriod % 60 < 10 ? '0' + timerPeriod % 60 : timerPeriod % 60;
         }
 
-        setTimer(timerPeriod);
+        setTimer();
 
         const runTimer = () => {
-            
+            intervalId = setInterval(function() {
+                timerPeriod -= 1;
+                setTimer();
+                if(timerPeriod == 0) {
+                    timerFinish = true;
+                    clearInterval(intervalId);
+                    return;
+                }
+            }, 1000);
         }
+
+        const pomodoroEl = document.querySelector('.pomodoro');
+        const shortBreakEl = document.querySelector('.shortBreak');
+        const longBreakEl = document.querySelector('.longBreak');
+        const modes = [pomodoroEl, shortBreakEl, longBreakEl];
+
+        modes.forEach((mode) => {
+            mode.addEventListener("click", function (e) {
+                if(e.target.classList.contains("pomodoro")) {
+                    timerPeriod = pomodoro;
+                } else if (e.target.classList.contains("shortBreak")) {
+                    timerPeriod = shortBreak;
+                } else if (e.target.classList.contains("longBreak")) {
+                    timerPeriod = longBreak;
+                }
+                setTimer();
+            });
+        });
 
     </script>
 </body>

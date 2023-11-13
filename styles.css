@@ -130,6 +130,10 @@ body {
     margin: 0 20px;
 }
 
+.pomodoro, .shortBreak, .longBreak {
+    cursor: pointer;
+}
+
 
 @media (max-width: 585px) {
     .mainContainer {
