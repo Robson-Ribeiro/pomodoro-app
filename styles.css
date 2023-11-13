@@ -134,6 +134,9 @@ body {
     cursor: pointer;
 }
 
+.stop, .start, .skip {
+    cursor: pointer;
+}
 
 @media (max-width: 585px) {
     .mainContainer {
