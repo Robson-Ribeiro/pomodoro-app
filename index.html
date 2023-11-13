@@ -8,6 +8,27 @@
 </head>
 <body>
 
+
+    <div class="digitalClock">
+        <div class="date">
+            <span id="dayname">Day</span>
+            <span>/</span>
+            <span id="month">Month</span>
+            <span>/</span>
+            <span id="year">Year</span>
+            <span id="datePipe">|</span>
+            <span id="daynum">00</span>
+        </div>
+        <div class="time">
+            <span id="hours">00</span>
+            <span> : </span>
+            <span id="minutes">00</span>
+            <span> : </span>
+            <span id="seconds">00</span>
+            <span id="period">AM</span>
+        </div>
+    </div>
+
     <div class="mainContainer">
         <span class="info">
             <h2>Pomodoro</h2>
@@ -20,20 +41,7 @@
                 <div class="longBreak">Long Break</div>
             </div>
 
-            <div class="digitalClock">
-                <div class="date">
-                    <span id="dayname">Day</span>
-                    <span id="month">Month</span>
-                    <span id="daynum">00</span>
-                    <span id="year">Year</span>
-                </div>
-                <div class="time">
-                    <span id="hour">00</span>
-                    <span id="minutes">00</span>
-                    <span id="seconds">00</span>
-                    <span id="period">AM</span>
-                </div>
-            </div>
+
 
             <div class="controls">
                 <div class="stop">Stop</div>
@@ -43,6 +51,40 @@
         </div>
     </div>
 
-    <script src="./main.js"></script>
+    <script>
+
+        const hours = document.getElementById('hours');
+        const minutes = document.getElementById('minutes');
+        const seconds = document.getElementById('seconds');
+        const period = document.getElementById('period');
+
+        const dayname = document.getElementById('dayname');
+        const month = document.getElementById('month');
+        const daynum = document.getElementById('daynum');
+        const year = document.getElementById('year');
+
+        const weekDays = [ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" ];
+
+        setInterval(function() {
+            const dateTime = new Date();
+
+            hours.innerText = dateTime.getHours();
+            minutes.innerText = dateTime.getMinutes();
+            seconds.innerText = dateTime.getSeconds();
+            dateTime.getHours > 12 ? period.innerText = 'PM' : period.innerText = 'AM';
+
+            dayname.innerText = dateTime.getDate();
+            month.innerText = Number(dateTime.getMonth()) + 1;
+            daynum.innerText = weekDays[dateTime.getDay()];
+            year.innerText = dateTime.getFullYear();
+        }, 1000);
+
+
+
+
+        
+
+
+    </script>
 </body>
 </html>
