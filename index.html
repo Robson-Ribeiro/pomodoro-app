@@ -41,7 +41,11 @@
                 <div class="longBreak">Long Break</div>
             </div>
 
-
+            <div class="pomodoroClock">
+                <span id="timerMinutes">00</span>
+                <span id="spaceBetween"> : </span>
+                <span id="timerSeconds">00</span>
+            </div>
 
             <div class="controls">
                 <div class="stop">Stop</div>
@@ -68,9 +72,9 @@
         setInterval(function() {
             const dateTime = new Date();
 
-            hours.innerText = dateTime.getHours();
-            minutes.innerText = dateTime.getMinutes();
-            seconds.innerText = dateTime.getSeconds();
+            hours.innerText = dateTime.getHours() < 10 ? '0' + dateTime.getHours() : dateTime.getHours();
+            minutes.innerText = dateTime.getMinutes() < 10 ? '0' + dateTime.getMinutes() : dateTime.getMinutes();
+            seconds.innerText = dateTime.getSeconds() < 10 ? '0' + dateTime.getSeconds() : dateTime.getSeconds();
             dateTime.getHours > 12 ? period.innerText = 'PM' : period.innerText = 'AM';
 
             dayname.innerText = dateTime.getDate();
@@ -79,11 +83,25 @@
             year.innerText = dateTime.getFullYear();
         }, 1000);
 
+        const timerMinutes = document.getElementById('timerMinutes');
+        const timerSeconds = document.getElementById('timerSeconds');
 
+        const pomodoro = 1500;
+        const shortBreak = 300;
+        const longBreak = 900;
 
-
+        let timerPeriod = 1500;
         
+        const setTimer = (seconds) => {
+            timerMinutes.innerText =  Math.floor(seconds / 60) < 10 ? '0' + Math.floor(seconds / 60) : Math.floor(seconds / 60);
+            timerSeconds.innerText = seconds % 60 < 10 ? '0' + seconds % 60 : seconds % 60;
+        }
 
+        setTimer(timerPeriod);
+
+        const runTimer = () => {
+            
+        }
 
     </script>
 </body>

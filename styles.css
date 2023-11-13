@@ -118,6 +118,17 @@ body {
     margin-bottom: 12px;
 }
 
+.pomodoroClock {
+    color: #eee;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-size: 63px;
+}
+
+#spaceBetween {
+    margin: 0 20px;
+}
 
 
 @media (max-width: 585px) {
