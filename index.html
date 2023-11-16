@@ -48,9 +48,9 @@
             </div>
 
             <div class="controls">
-                <div class="stop">Stop</div>
-                <div class="start">Start</div>
-                <div class="skip"> >>></div>
+                <div class="stop underline">Stop</div>
+                <div class="start underline">Start</div>
+                <div class="skip underline"> >>></div>
             </div>
         </div>
     </div>
@@ -170,12 +170,18 @@
                 if(e.target.classList.contains("pomodoro")) {
                     timerPeriod = pomodoro;
                     timerMode = 1;
+                    clearInterval(intervalId);
+                    currentControl = 1;
                 } else if (e.target.classList.contains("shortBreak")) {
                     timerPeriod = shortBreak;
                     timerMode = 2;
+                    clearInterval(intervalId);
+                    currentControl = 1;
                 } else if (e.target.classList.contains("longBreak")) {
                     timerPeriod = longBreak;
                     timerMode = 3;
+                    clearInterval(intervalId);
+                    currentControl = 1;
                 }
                 setTimer();
             });
