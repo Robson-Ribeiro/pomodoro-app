@@ -83,6 +83,7 @@
             year.innerText = dateTime.getFullYear();
         }, 1000);
 
+        let currentControl = 1;
         let intervalId;
         let timerMode = 1;
         const timerMinutes = document.getElementById('timerMinutes');
@@ -115,12 +116,18 @@
             }
         }
 
+        function playAudio(sound) {
+            let audio = new Audio(sound);
+            audio.play();
+        }
+
         let counter = 0;
         const changeTimerMode = () => {
             if(counter === 4) {
                 timerPeriod = longBreak;
                 timerMode = 3;
                 counter = 0;
+                playAudio("./mp3/call-to-attention.mp3");
                 return;
 
             }
@@ -128,9 +135,11 @@
                 timerPeriod = shortBreak;
                 timerMode = 2;
                 counter += 1;
+                playAudio("./mp3/ding.mp3");
             } else if(timerMode === 2 || timerMode === 3) {
                 timerPeriod = pomodoro;
                 timerMode = 1;
+                playAudio("./mp3/ding.mp3");
             }
         }
 
@@ -172,7 +181,6 @@
             });
         });
 
-        let currentControl = 1;
         const stop = document.querySelector('.stop');
         const start = document.querySelector('.start');
         const skip = document.querySelector('.skip');
